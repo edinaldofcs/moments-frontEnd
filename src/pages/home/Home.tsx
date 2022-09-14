@@ -23,13 +23,13 @@ export default function Home() {
   }, []);
 
   async function listRooms() {
-    const data = await fetch("http://localhost:5000/instant/rooms");
+    const data = await fetch(`${process.env.REACT_APP_API_HOST}/rooms`);
     const res = await data.json();
     setRooms(res.rooms);
   }
 
   async function enterRoom(room: string) {
-    const data = await fetch(`http://localhost:5000/instant/all/${room}`);
+    const data = await fetch(`${process.env.REACT_APP_API_HOST}/all/${room}`);
     const res = await data.json();
     setChats(res);
     setSelectRoom(room);
@@ -40,7 +40,7 @@ export default function Home() {
       setError(true);
     } else {
       try {
-        await fetch(`http://localhost:5000/instant/like/${id}/${selectRoom}`, {
+        const res = await fetch(`${process.env.REACT_APP_API_HOST}/like/${id}/${selectRoom}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -48,6 +48,10 @@ export default function Home() {
             Authorization: `Bearer ${user.token}`,
           },
         });
+      
+        const message = await res.json()
+        console.log(message);
+        
         enterRoom(selectRoom);
       } catch (error) {
         setError(true);
@@ -61,7 +65,7 @@ export default function Home() {
     } else {
       try {
         await fetch(
-          `http://localhost:5000/instant/delete/${id}/${selectRoom}`,
+          `${process.env.REACT_APP_API_HOST}/delete/${id}/${selectRoom}`,
           {
             method: "DELETE",
             headers: {

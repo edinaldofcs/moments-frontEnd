@@ -49,7 +49,7 @@ export const S_HOME = styled.div`
   @media screen and (max-width: 568px) {
     flex-direction: column;
     align-items: center;
-
+   
     aside {
       width: 100%;
       div {

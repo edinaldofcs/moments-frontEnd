@@ -37,7 +37,7 @@ export default function NavBar() {
   }
 
   async function enterRoom(room: string) {
-    const data = await fetch(`http://localhost:5000/instant/all/${room}`);
+    const data = await fetch(`${process.env.REACT_APP_API_HOST}/all/${room}`);
     const res = await data.json();
     setChats(res);
     setSelectRoom(room);
@@ -45,7 +45,7 @@ export default function NavBar() {
 
   async function insert() {
     try {
-      await fetch(`http://localhost:5000/instant/insert/${selectRoom}`, {
+      await fetch(`${process.env.REACT_APP_API_HOST}/insert/${selectRoom}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,6 +74,7 @@ export default function NavBar() {
       ) : (
         <div>Registre seus momentos</div>
       )}
+      <h1>Moments</h1>
       <ul>
         {user.name ? (
           <>

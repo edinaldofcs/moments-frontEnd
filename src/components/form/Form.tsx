@@ -7,15 +7,10 @@ export default function Form(props: {
   chat: chatProps;
   handleClick: () => Promise<void>;
 }) {
-  const {
-    text,
-    setText,
-    setShowForm,
-    changes,
-    setChanges,
-  } = useContext(Context);
+  const { text, setText, setShowForm, changes, setChanges } =
+    useContext(Context);
   const chat = props.chat;
-  const [pageForm, setPageForm] = useState(0); 
+  const [pageForm, setPageForm] = useState(0);
 
   function handleChange(e: any) {
     setChanges({ ...changes, [e.target.name]: e.target.value });
@@ -68,16 +63,19 @@ export default function Form(props: {
           </>
         ) : (
           <>
-            <p>Alterar descrição:</p>
+            <p>Titulo:</p>
             <textarea
               name="title"
               value={changes.title}
               onChange={handleChange}
+              id="title"
             />
+            <p>Descrição:</p>
             <textarea
               name="description"
               value={changes.description}
               onChange={handleChange}
+              id="description"
             />
           </>
         )}

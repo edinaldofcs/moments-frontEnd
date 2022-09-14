@@ -25,7 +25,7 @@ export default function Message(props: {
   } = useContext(Context);
   
   async function enterRoom(room: string) {
-    const data = await fetch(`http://localhost:5000/instant/all/${room}`);
+    const data = await fetch(`${process.env.REACT_APP_API_HOST}/all/${room}`);
     const res = await data.json();
     setChats(res);
     setSelectRoom(room);
@@ -33,7 +33,7 @@ export default function Message(props: {
 
   async function editPost() {
     try {
-      await fetch(`http://localhost:5000/instant/update/${changes.id}/${selectRoom}`, {
+      await fetch(`${process.env.REACT_APP_API_HOST}/update/${changes.id}/${selectRoom}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

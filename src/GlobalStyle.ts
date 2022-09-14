@@ -9,6 +9,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     text-decoration: none;
   }
+  @media screen and (max-width: 678px) {
+    h1{
+      display:none;
+    }
+  }
 `;
 
 export default GlobalStyle;

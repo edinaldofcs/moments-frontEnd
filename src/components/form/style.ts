@@ -7,6 +7,8 @@ export const S_FORM = styled.form`
   width: 100vw;
   height: 100vh;
   padding: 2rem;
+  color: #000;
+  text-align:left;
 
   div {
     display: flex;
@@ -24,6 +26,10 @@ export const S_FORM = styled.form`
     transform: translate(-50%, -50%);
     box-shadow: 0px 0px 8px 2px #333;
 
+    p{
+      width: 100%;
+      padding-left: 1rem;
+    }
     span {
       position: absolute;
       top: 0;
@@ -36,7 +42,7 @@ export const S_FORM = styled.form`
     }
 
     label {
-      transition: 0.5s all;
+      transition: 0.3s all;
     }
 
     label:hover {
